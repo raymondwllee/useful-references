@@ -1,0 +1,20 @@
+import time
+import pytz
+import datetime
+
+start_time = time.time() 
+print("Current epoch/Unix timestamp:", start_time)#current epoc time stamp
+print("Current time converted using time:", time.ctime(start_time))#current time converted using time
+dt_today = datetime.datetime.today()#current time converted using datetime
+print("Current time converted using datetime:", dt_today)
+dt_Sudbury = dt_today.astimezone(pytz.timezone('Canada/Eastern'))#current time at select time zone (Ontario)
+print("Current time at select time zone (Ontario):", dt_Sudbury)
+datetimesudbury = dt_Sudbury.strftime("%b %d %Y %H:%M:%S")
+print(f"Current time at select time zone (Ontario) using stfttime function: {datetimesudbury}")
+
+
+#choice = input("testing. press to continue. ")
+
+elapsed_time = time.time() - start_time
+
+print("Elapsed time for calculation rounded to 2 decimal places", round(elapsed_time,2),"seconds")
