@@ -6,9 +6,9 @@ import datetime
 start_time = time.time() 
 print("Current epoch/Unix timestamp:", start_time) #current epoc time stamp
 time.sleep(0.5) #pause for 0.5 second
-print("Current time converted using time:", time.ctime(start_time)) #current time converted using time
+print("Current time converted using time:", time.ctime(start_time)) #current time converted to Greenwich Mean Time using time package
 time.sleep(0.5)
-dt_today = datetime.datetime.today()#current time converted using datetime
+dt_today = datetime.datetime.today()#current time converted to Greenwich Mean Time using datetime package
 print("Current time converted using datetime:", dt_today)
 time.sleep(0.5)
 dt_Sudbury = dt_today.astimezone(pytz.timezone('Canada/Eastern')) #current time at select time zone (Ontario)
