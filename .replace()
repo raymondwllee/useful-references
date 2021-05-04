@@ -1,0 +1,21 @@
+'''.replace() application scenario. Need to be competent in join, f-string, line break/indent, title(), upper(), list comprehension'''
+
+name = "ray+lee"
+print(name)
+new_name = name.replace("+", " ") #must assign new variable
+print(new_name.title()) #title for name
+
+print("\n",new_name.upper()) #start with line break using join, in uppercase
+print(f"\t{new_name}") #indent before print using f-string
+
+#application in list comprehension
+#need to print out names from list clearly titled and without the underscore
+list = ["si_jones", "sid_johnson", "clair_wilson", "john_jackson"]
+list2 = [] #empty list
+for item in list: #clean up names and move to list2
+  names = item.replace("_", " ")
+  print(names.title(),"\n") #print names out with line break using join
+  list2.append(names.title())
+
+print(*list2) #print out all list elements on same line
+print(*list2[1:], sep=', ') #print slice of list on same line,add comma to separate each element
