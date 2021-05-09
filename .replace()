@@ -2,8 +2,9 @@
 
 name = "ray+lee"
 print(name)
-new_name = name.replace("+", " ") #must assign new variable
+new_name = name.replace("+", " ") #changing + to space. Assign new variable not a requirement but often helps.
 print(new_name.title()) #title for name
+print(name.replace("+", " ").title()) #if no new variable assigned
 
 print("\n",new_name.upper()) #start with line break using join, in uppercase
 print(f"\t{new_name}") #indent before print using f-string
