@@ -1,0 +1,23 @@
+#using join to print strings together
+
+string1 = "I"
+string2 = "am"
+string3 = "Ray"
+string4 = "."
+
+
+print(string1 + string2 + string3 +string4) #IamRay.
+print(string1 + " " + string2 + " " + string3 + string4) #I am Ray.
+print(string1, string2, string3, string4) #I am Ray .
+#space embedded, not ideal if you don't want the space
+
+#Using f-string
+print(f"{string1} {string2} {string3}{string4}") #My preferred method. flexible but must use curly brackets for variables.
+
+#example printing variables and string together using join and f-string
+#Using f-string
+print(f"Welcome to Python. {string1} {string2} {string3}{string4} What is your name?")
+#using join example1
+print("Welcome to Python." + " " + string1 + " " + string2 + " " + string3 + string4 + " What is your name?")
+#using join example2
+print("Welcome to Python.", string1, string2, string3 + string4, "What is your name?")
