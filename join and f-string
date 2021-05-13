@@ -1,6 +1,6 @@
 #using join to print strings together
 
-string1 = "I"
+string1 = "I" #in single or double quotes which means it is a string
 string2 = "am"
 string3 = "Ray"
 string4 = "."
