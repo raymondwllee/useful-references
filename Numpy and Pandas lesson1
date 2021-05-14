@@ -1,0 +1,25 @@
+import pandas as pd
+import numpy as np
+#example list of list data imported from elsewhere, possibly a CSV file. numbers inside the list have no quotes which means they are already in integer format
+
+list = [['gamma','strategy name','theta','credit','buying power reduction'],['negative', 'short put','positive',123, 1045],['negative', 'short call','positive',89, 700],['positive', 'long put','negative',151, 1047],
+        ['positive', 'long call','negative',87, 945],['negative', 'short strangle','positive',313, 1304],['positive', 'long strangle','negative',99, 705],
+        ['negative', 'short straddle','positive',150, 870],['positive', 'long straddle','negative',423, 2004],['negative', 'ratio spread','postive',178, 3521],
+        ['positive', 'back spread','negative',217, 2000],['negative', 'credit spread','positive',123, 8007],['positive', 'debit spread','negative',121, 1809]]
+
+#name dataframe as "df_derivatives". Dataframe is data in a tabular format where calculation can be performed
+df_derivatives = pd.DataFrame(list[1:], columns=list[0]) #rows from index position 1, columns are index position 0. DataFrame function not available unless Pandas is installed.
+print(df_derivatives)
+
+#loop through different columns across the dataframe
+for col in np.array(['credit', 'buying power reduction']): #print  the mean for specific columns
+  print(col.title())
+  print(round(df_derivatives[col].mean(),2)) #round to 2 decimal
+
+#same example but grouped by a column
+for g in df_derivatives.gamma.unique():
+  df_gamma = df_derivatives[df_derivatives.gamma==g]
+  print("\n",g.title())
+  for col in np.array(['credit', 'buying power reduction']):
+    print("\n",col.title())
+    print(round(df_gamma[col].mean(),2))
