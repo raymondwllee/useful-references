@@ -1,0 +1,87 @@
+import pandas as pd
+import numpy as np
+
+# Define a dictionary containing students data
+data = {'Name': ['Endie', 'Ella', 'Elliot', 'Priyanka', 'John', 'Alison','Donald','Alex','Dora','Dori'],
+                'Age': [21, 19, 20, 18,23,27,22,31,19,27],
+                'Stream': ['Math', 'Commerce', 'Arts', 'Biology','Law','Law','Math','Arts','Commerce','Commerce'],
+                'Percentage': [88, 92, 95, 70,92,78,56,88,71,91]}
+  
+# Convert the dictionary into DataFrame
+df = pd.DataFrame(data, columns = ['Name', 'Age', 'Stream', 'Percentage'])
+
+#Print the name and the stream of all the entries in a dataframe
+#first method
+df1 = pd.DataFrame(data, columns = ['Name', 'Stream']) #create dataframe for only 2 columns
+arr1 = df1.to_numpy() #convert to numpy Array
+for i in range(len(arr1)): #for loop, range is the length of array1
+  print(arr1[i][0], arr1[i][1]) # print name at index position 0, stream at position 1
+print("\n-----------------------------------------------\n")
+#Second method
+#for loop to print name and stream of the dataframe
+for index, row in df.iterrows(): #iterate with index and series pair on dataframe
+    print(row['Name'], row['Stream'])  #prints name and stream
+print("\n-----------------------------------------------\n")
+#Print the name and the stream of the first three students
+#first method
+arr2 = arr1[:3] #slice previous array 
+for i in range(len(arr2)): #repeat code from question 1
+  print(arr2[i][0], arr2[i][1])
+print("\n-----------------------------------------------\n")
+#Second method
+for i in range(0,3): #for loop using range to display first three elements
+  #print statement using loc method 
+  print(df.loc[i,"Name"], df.loc[i,"Stream"])
+print("\n-----------------------------------------------\n")
+#print the name and the stream of the last student
+#first method
+arr3 = arr1[-1:] #slice array1 
+for i in range(len(arr3)): #repeat code from question 1
+  print(arr3[i][0], arr3[i][1])
+print("\n-----------------------------------------------\n")
+#Second method
+print(df.loc[9,"Name"], df.loc[9,"Stream"])
+print("\n-----------------------------------------------\n")
+#Print the name/names and the stream/streams of the person/people that is/are older than 18 and exclude the first row.
+arr4 = arr1[1:] #slice previous array 
+for i in range(len(arr4)): #repeat code from question 1
+  if data['Age'][i+1] > 18: #if statement to ensure only entries with age higher than 18 are printed
+    print(arr4[i][0], arr4[i][1])
+print("\n-----------------------------------------------\n")
+#Print the averages for age and percentage columns
+#first method
+df5 = pd.DataFrame(data, columns = ['Age', 'Percentage']) #create dataframe for only 2 columns
+arr5 = df5.to_numpy() #convert to numpy Array
+#print(arr5)
+sum_age = 0
+sum_percentage = 0
+for i in range(len(arr5)): #for loop to sum up and add to variables
+  sum_age += arr5[i][0]
+  sum_percentage += arr5[i][1]
+print(sum_age/len(arr5)) #sum divided by length of the array
+print(sum_percentage/len(arr5))
+print("\n-----------------------------------------------\n")
+#Second method
+#np.array method is used to find the average using for loop
+for col in np.array(['Age','Percentage']):
+  #mean method with round function to round of the result
+  print(round(df[col].mean(),2))
+print("\n-----------------------------------------------\n")
+#Print the counts of students by stream, use .value_counts instead of .mean
+#np.array method is used to find the count of students per stream using for loop
+for col in np.array(['Stream']):
+  #value_counts method is used to print number of students per stream
+  print(df[col].value_counts())
+print("\n-----------------------------------------------\n")
+#Second method
+df6 = pd.DataFrame(data, columns = ['Stream'])
+print(df6.value_counts())
+print("\n-----------------------------------------------\n")
+#Print averages by stream (outer loop to get the streams, inner loop to get averages)
+#for loop to get unique streams
+for stream in df.Stream.unique():
+  df_stream=df[df.Stream==stream]
+    #np.array method is used to find the average using for loop
+  for col in np.array(['Age','Percentage']):
+     #mean method with round function to round of the result
+    print(round(df_stream[col].mean(),2))
